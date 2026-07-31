@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const url = "https://dummyjson.com/products";
+       async function loadProduct(){
+            try{
+                const res= await fetch(url);
+                const data= await res.json();
+                 console.log("data", data);
+                  const elem1=document.getElementById("data");
+                  let c=0;
+                   data.products.map((product)=>{
+                    
+                elem1.innerHTML+=`
+            <tr>
+                <td>${c++}</td>
+                <td>${product.title}</td>
+                <td>${product.category}</td>
+                <td>${product.price}</td>
+                <td>${product.rating}</td>
+            </tr>
+            `;
+        });
+            }
+            catch(error){
+                console.log("error",error);
+            }
+        }
+        loadProduct();
+       
+    </script>
+    <style>
+           body{
+    font-family: Arial, sans-serif;
+    background:#f4f6f9;
+}
+
+table{
+    width:90%;
+    margin:30px auto;
+    border-collapse:collapse;
+    box-shadow:0 0 15px rgba(0,0,0,.2);
+    background:white;
+}
+
+thead{
+    background:#0d6efd;
+    color:white;
+}
+
+th,td{
+    padding:12px;
+    border:1px solid #ddd;
+    text-align:center;
+}
+
+tbody tr:nth-child(even){
+    background:#f8f9fa;
+}
+
+tbody tr:hover{
+    background:#dbeafe;
+    cursor:pointer;
+}
+    </style>
+</head>
+<body>
+     <table>
+        <thead>
+              <tr>
+                <th>
+                        ID
+                        </th>
+                <th>
+                       Title
+                </th>
+                <th>
+                        Category
+                </th>
+                <th> Price</th>
+                <th> Rating</th>
+              </tr>
+        </thead>
+        <tbody id="data">
+            
+            
+        </tbody>
+     </table>
+</body>
+</html>
