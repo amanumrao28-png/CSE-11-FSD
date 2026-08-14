@@ -14,9 +14,10 @@
             border:1px solid black;
             padding:10px;
         }
+
     </style>
     <script>
-        const url = "https://dummyjson.com/products?limit=100&skip=2";
+        const url = "https://dummyjson.com/products?limit=10&skip=2";
         async function loadProducts(){
             try{
                 const res=await fetch(url);
@@ -39,6 +40,7 @@
 
                         <td>${(product.price * usdtoInrRate).toFixed(2)}</td>
                         <td>${product.stock}</td>
+                        <td><input type="button" value="Add to Cart"></td>
                     </tr>`
                 })
                  const ele=document.getElementById('data');
@@ -64,6 +66,7 @@
                 <th>Rating</th>
                 <th>Price</th>
                 <th>Stock</th>
+                <th>Action</th>
             </tr>
 
         </thead>
@@ -71,6 +74,10 @@
 
         </tbody>
      </table>
+     <br>
+     <br>
+
+     <h1 ><center> <a href="#"><input type="button" value="Place Order" style="background-color: rgb(181, 181, 231); border: 2px solid black; width: 200px;height: 50px; font-size: 16px;"></a></center></h1>
 </body>
 </html>
 
